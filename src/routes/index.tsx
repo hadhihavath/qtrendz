@@ -10,6 +10,7 @@ import hero1 from "@/assets/hero1.png";
 import hero2 from "@/assets/hero2.png";
 import hero3 from "@/assets/hero3.png";
 import { ArrowRight, Truck, ShieldCheck, Sparkles } from "lucide-react";
+import { InteractiveHeroBackground } from "@/components/InteractiveHeroBackground";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -74,6 +75,7 @@ function Index() {
     <SiteLayout>
       {/* Hero */}
       <section className="relative overflow-hidden">
+        <InteractiveHeroBackground />
         <div className="mx-auto max-w-7xl px-4 md:px-8 pt-10 md:pt-20 pb-16 md:pb-28 grid gap-10 md:grid-cols-2 items-center">
           <div>
             <div className="inline-flex items-center gap-2 rounded-full bg-accent px-3 py-1 text-xs font-medium text-primary">
