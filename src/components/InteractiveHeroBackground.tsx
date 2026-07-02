@@ -242,7 +242,7 @@ export function InteractiveHeroBackground() {
   return (
     <canvas
       ref={canvasRef}
-      className="absolute inset-0 -z-10 h-full w-full pointer-events-none opacity-100 transition-opacity"
+      className="absolute inset-0 -z-10 h-full w-full pointer-events-none opacity-50 transition-opacity"
     />
   );
 }
