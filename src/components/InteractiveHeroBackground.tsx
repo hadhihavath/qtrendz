@@ -20,7 +20,7 @@ export function InteractiveHeroBackground() {
     };
     window.addEventListener("resize", handleResize);
 
-    // Particle definition
+    // Particle definition: product-related shapes drifting gently
     class Particle {
       x: number;
       y: number;
@@ -28,19 +28,22 @@ export function InteractiveHeroBackground() {
       vy: number;
       radius: number;
       color: string;
+      type: number; // 0: headphone, 1: shopping bag, 2: smart ring, 3: lightbulb, 4: sparkle/star
 
       constructor() {
         this.x = Math.random() * width;
         this.y = Math.random() * height;
-        this.vx = (Math.random() - 0.5) * 0.45;
-        this.vy = (Math.random() - 0.5) * 0.45;
-        this.radius = Math.random() * 3 + 2.5;
+        // Slightly slower drift speed to highlight product shapes
+        this.vx = (Math.random() - 0.5) * 0.35;
+        this.vy = (Math.random() - 0.5) * 0.35;
+        this.radius = 6;
+        this.type = Math.floor(Math.random() * 5);
         
         const rand = Math.random();
-        if (rand < 0.65) {
-          this.color = "rgba(141, 27, 61, 0.45)"; // Burgundy (#8D1B3D)
+        if (rand < 0.60) {
+          this.color = "rgba(141, 27, 61, 0.48)"; // Burgundy (#8D1B3D)
         } else if (rand < 0.85) {
-          this.color = "rgba(230, 194, 41, 0.55)"; // Gold (#E6C229)
+          this.color = "rgba(230, 194, 41, 0.60)"; // Gold (#E6C229)
         } else {
           this.color = "rgba(141, 27, 61, 0.30)";
         }
@@ -57,10 +60,74 @@ export function InteractiveHeroBackground() {
 
       draw() {
         if (!ctx) return;
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.fillStyle = this.color;
-        ctx.fill();
+        const x = this.x;
+        const y = this.y;
+
+        ctx.save();
+        
+        if (this.type === 0) {
+          // Gadget: Headphones
+          // Arch
+          ctx.beginPath();
+          ctx.arc(x, y - 1, 5, Math.PI, 0);
+          ctx.strokeStyle = this.color;
+          ctx.lineWidth = 1.6;
+          ctx.stroke();
+          // Ear pads
+          ctx.fillStyle = this.color;
+          ctx.fillRect(x - 6.5, y - 2, 2, 4.5);
+          ctx.fillRect(x + 4.5, y - 2, 2, 4.5);
+        } else if (this.type === 1) {
+          // Shopping: Gift/Shopping Bag
+          // Handle
+          ctx.beginPath();
+          ctx.arc(x, y - 1, 2.5, Math.PI, 0);
+          ctx.strokeStyle = this.color;
+          ctx.lineWidth = 1.2;
+          ctx.stroke();
+          // Bag Box
+          ctx.fillStyle = this.color;
+          ctx.fillRect(x - 4.5, y - 1, 9, 7.5);
+        } else if (this.type === 2) {
+          // Tech: Smart Ring
+          ctx.beginPath();
+          ctx.arc(x, y, 4.5, 0, Math.PI * 2);
+          ctx.strokeStyle = this.color;
+          ctx.lineWidth = 1.6;
+          ctx.stroke();
+          // Diamond gemstone
+          ctx.beginPath();
+          ctx.arc(x + 2.5, y - 2.5, 1.5, 0, Math.PI * 2);
+          ctx.fillStyle = "#E6C229"; // Sparkly gold
+          ctx.fill();
+        } else if (this.type === 3) {
+          // Home: Smart Bulb
+          ctx.beginPath();
+          ctx.arc(x, y - 1.5, 4, 0, Math.PI * 2);
+          ctx.fillStyle = this.color;
+          ctx.fill();
+          // Thread cap
+          ctx.fillStyle = this.color;
+          ctx.fillRect(x - 1.8, y + 2.5, 3.6, 2.5);
+          // Light emission dot
+          ctx.beginPath();
+          ctx.arc(x, y - 1.5, 1.2, 0, Math.PI * 2);
+          ctx.fillStyle = "#ffffff";
+          ctx.fill();
+        } else {
+          // Trend: Sparkle / Star
+          ctx.beginPath();
+          ctx.moveTo(x, y - 6);
+          ctx.quadraticCurveTo(x, y, x + 6, y);
+          ctx.quadraticCurveTo(x, y, x, y + 6);
+          ctx.quadraticCurveTo(x, y, x - 6, y);
+          ctx.quadraticCurveTo(x, y, x, y - 6);
+          ctx.closePath();
+          ctx.fillStyle = this.color;
+          ctx.fill();
+        }
+
+        ctx.restore();
       }
     }
 
