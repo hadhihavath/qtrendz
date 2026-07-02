@@ -66,8 +66,7 @@ function AdminLayout() {
     <div className="min-h-screen grid md:grid-cols-[240px_1fr]">
       <aside className="border-e border-border bg-card p-4 md:p-6">
         <Link to="/" className="flex items-center gap-2 mb-8">
-          <span className="grid h-8 w-8 place-items-center rounded-sm bg-primary text-primary-foreground font-display text-lg font-bold">T</span>
-          <span className="font-display font-semibold">{t("admin")}</span>
+          <img src="/qtrendz/logo.svg" className="h-8 w-auto" alt="QTRENDZ Logo" />
         </Link>
         <nav className="flex md:flex-col gap-1">
           {items.map((i) => {

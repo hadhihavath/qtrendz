@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+  <defs>
+    <linearGradient id="favGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8D1B3D" />
+      <stop offset="100%" stop-color="#5B0612" />
+    </linearGradient>
+  </defs>
+  <!-- Rounded corner background box -->
+  <rect width="120" height="120" rx="30" fill="url(#favGrad)" />
+  <!-- Stylized Q & Trend Arrow in White and Gold -->
+  <g transform="translate(10, 10)">
+    <!-- Q Ring -->
+    <path d="M 50,20 A 30,30 0 1, 0 74,68 L 84,80" fill="none" stroke="#ffffff" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" />
+    <!-- Trend Line Arrow -->
+    <path d="M 38,38 L 60,60 M 60,60 L 52,60 M 60,60 L 60,52" fill="none" stroke="#E6C229" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+    <circle cx="74" cy="68" r="4.5" fill="#E6C229" />
+  </g>
+</svg>

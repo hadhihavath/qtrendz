@@ -34,8 +34,7 @@ export function SiteHeader() {
     <header className="sticky top-0 z-40 border-b border-border bg-background/85 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 md:px-8">
         <Link to="/" className="flex items-center gap-2 group">
-          <span className="grid h-8 w-8 place-items-center rounded-sm bg-primary text-primary-foreground font-display text-lg font-bold">T</span>
-          <span className="font-display text-lg font-semibold tracking-tight">{t("brand")}</span>
+          <img src="/qtrendz/logo.svg" className="h-8 md:h-9 w-auto" alt="QTRENDZ Logo" />
         </Link>
 
         <nav className="hidden md:flex items-center gap-8">
