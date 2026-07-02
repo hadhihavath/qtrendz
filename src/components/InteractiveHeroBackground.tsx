@@ -34,15 +34,15 @@ export function InteractiveHeroBackground() {
         this.y = Math.random() * height;
         this.vx = (Math.random() - 0.5) * 0.45;
         this.vy = (Math.random() - 0.5) * 0.45;
-        this.radius = Math.random() * 2 + 1;
+        this.radius = Math.random() * 3 + 2.5;
         
         const rand = Math.random();
         if (rand < 0.65) {
-          this.color = "rgba(141, 27, 61, 0.14)"; // Burgundy (#8D1B3D)
+          this.color = "rgba(141, 27, 61, 0.45)"; // Burgundy (#8D1B3D)
         } else if (rand < 0.85) {
-          this.color = "rgba(230, 194, 41, 0.15)"; // Gold (#E6C229)
+          this.color = "rgba(230, 194, 41, 0.55)"; // Gold (#E6C229)
         } else {
-          this.color = "rgba(141, 27, 61, 0.08)";
+          this.color = "rgba(141, 27, 61, 0.30)";
         }
       }
 
@@ -65,7 +65,7 @@ export function InteractiveHeroBackground() {
     }
 
     const particles: Particle[] = [];
-    const particleCount = Math.min(75, Math.floor((width * height) / 12000));
+    const particleCount = Math.min(100, Math.floor((width * height) / 8000));
     for (let i = 0; i < particleCount; i++) {
       particles.push(new Particle());
     }
@@ -103,12 +103,12 @@ export function InteractiveHeroBackground() {
           const p2 = particles[j];
           const dist = Math.hypot(p1.x - p2.x, p1.y - p2.y);
           if (dist < 95) {
-            const alpha = (1 - dist / 95) * 0.09;
+            const alpha = (1 - dist / 95) * 0.30;
             ctx.beginPath();
             ctx.moveTo(p1.x, p1.y);
             ctx.lineTo(p2.x, p2.y);
             ctx.strokeStyle = `rgba(141, 27, 61, ${alpha})`;
-            ctx.lineWidth = 0.75;
+            ctx.lineWidth = 1.0;
             ctx.stroke();
           }
         }
@@ -117,12 +117,12 @@ export function InteractiveHeroBackground() {
         if (mouse.x > -9999) {
           const distToMouse = Math.hypot(p1.x - mouse.x, p1.y - mouse.y);
           if (distToMouse < mouse.radius) {
-            const alpha = (1 - distToMouse / mouse.radius) * 0.18;
+            const alpha = (1 - distToMouse / mouse.radius) * 0.50;
             ctx.beginPath();
             ctx.moveTo(p1.x, p1.y);
             ctx.lineTo(mouse.x, mouse.y);
             ctx.strokeStyle = `rgba(230, 194, 41, ${alpha})`;
-            ctx.lineWidth = 0.9;
+            ctx.lineWidth = 1.25;
             ctx.stroke();
           }
         }
@@ -142,7 +142,7 @@ export function InteractiveHeroBackground() {
           mouse.y,
           180
         );
-        radGrad.addColorStop(0, "rgba(141, 27, 61, 0.045)");
+        radGrad.addColorStop(0, "rgba(141, 27, 61, 0.14)");
         radGrad.addColorStop(1, "rgba(255, 255, 255, 0)");
         ctx.fillStyle = radGrad;
         ctx.beginPath();
@@ -175,7 +175,7 @@ export function InteractiveHeroBackground() {
   return (
     <canvas
       ref={canvasRef}
-      className="absolute inset-0 -z-10 h-full w-full pointer-events-none opacity-85 transition-opacity"
+      className="absolute inset-0 -z-10 h-full w-full pointer-events-none opacity-100 transition-opacity"
     />
   );
 }
