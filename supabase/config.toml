@@ -2,4 +2,4 @@ project_id = "kzbxrwvioqfvwbtpubyv"
 
 [auth.email.template.confirm_signup]
 subject = "Confirm Your Email - QTRENDZ"
-content_path = "./email-templates/confirm-signup.html"
+content_path = "./supabase/email-templates/confirm-signup.html"
